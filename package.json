@@ -1,0 +1,63 @@
+{
+  "name": "camel-admin",
+  "version": "2.9.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "analyz": "npm_config_report=true npm run build",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e"
+  },
+  "dependencies": {
+    "@vue/babel-preset-app": "^5.0.8",
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "classlist-polyfill": "^1.2.0",
+    "core-js": "^3.6.5",
+    "dayjs": "^1.11.7",
+    "element-ui": "^2.15.14",
+    "file-saver": "^2.0.2",
+    "lodash": "4.17.21",
+    "mockjs": "^1.0.1-beta3",
+    "node-gyp": "^5.0.6",
+    "nprogress": "^0.2.0",
+    "qs": "^6.9.6",
+    "stompjs": "^2.3.3",
+    "vue": "^2.6.10",
+    "vue-axios": "^2.1.2",
+    "vue-codemirror": "^4.0.6",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.1.2",
+    "compression-webpack-plugin": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^2.2.1",
+    "prettier-plugin-style-order": "^0.2.2",
+    "prettier-quick": "^0.0.5",
+    "sass": "^1.49.8",
+    "sass-loader": "^7.0.1",
+    "svg-sprite-loader": "^4.1.6",
+    "vue-template-compiler": "2.6.14",
+    "webpack-bundle-analyzer": "^3.0.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
