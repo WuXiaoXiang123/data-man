@@ -2,7 +2,7 @@ import request from '@/router/axios'
 
 export const getTaskList = (params) => {
   return request({
-    url: '/task/page',
+    url: '/jrd-data/task/getTaskList',
     method: 'get',
     params,
   })
@@ -11,7 +11,7 @@ export const getTaskList = (params) => {
 
 export const addTask = (data) => {
   return request({
-    url: '/task',
+    url: '/jrd-data/task/createTask',
     method: 'post',
     data,
   })
@@ -45,10 +45,11 @@ export const removeTask = (id) => {
   })
 }
 
-export const taskStart = (id) => {
+export const taskStart = (data) => {
   return request({
-    url: `/task/${id}/action/start`,
+    url: `/jrd-data/task/startTask`,
     method: 'post',
+    data,
   })
 }
 
@@ -67,11 +68,10 @@ export const exportData = (id) => {
   })
 }
 
-export const getViewData = (params) => {
-  const { id, ...rest } = params
+export const getComparisonData = (params) => {
   return request({
-    url: `/task/${id}/action/compareData`,
+    url: `/jrd-data/view/compareViews`,
     method: 'get',
-    params: rest,
+    params,
   })
 }

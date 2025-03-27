@@ -19,8 +19,8 @@
       <el-table-column prop="name" label="模型名" show-overflow-tooltip width="200"></el-table-column>
       <el-table-column label="操作">
         <template v-slot="scope">
-          <el-button size="small" @click="modelDetail(scope.row)"
-            :style="{ marginRight: scope.row.state ? '0px' : '10px' }">详情
+          <el-button size="small" @click="goToDetail(scope.row)"
+            :style="{ marginRight: '10px' }">详情
           </el-button>
           <el-popconfirm title="确认删除？" @confirm="delModel(scope.row)" style="margin-right: 10px">
             <el-button size="small" slot="reference">删除</el-button>
@@ -122,13 +122,9 @@ export default {
         }
       })
     },
-    addDataModel() {
-
-    },
-    //打开编辑弹窗
-    editDataModel(row) {
-      this.dataModelFormVis = true
-      this.rowData = { ...row }
+    // 查看详情
+    goToDetail(row) {
+      this.$router.push(`/dataModel/${row.id}`)
     },
     //删除任务
     delModel(row) {

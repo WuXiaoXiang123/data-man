@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { getViewData } from '@/api/task-manage'
+import { getComparisonData } from '@/api/task-manage'
 import { highLightTable } from './util'
 
 export default {
@@ -77,7 +77,7 @@ export default {
     queryViewData(params) {
       const { current } = params
       this.tableLoading = true
-      getViewData(params).then(res => {
+      getComparisonData(params).then(res => {
         if (res.data.code === 0) {
           this.current = current
           this.total = res.data.data.originData.total

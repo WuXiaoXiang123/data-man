@@ -19,39 +19,30 @@
         </el-form-item>
       </el-form>
     </div>
-    <!--    <div style="padding: 10px 0">-->
-    <!--      <el-button size="small" @click="addTask" type="primary">新建任务</el-button>-->
-    <!--    </div>-->
     <el-table :data="taskList" border tooltip-effect="dark" style="width: 100%;margin-bottom: 10px" :max-height="800"
-              row-key="id" size="small" v-loading="tableLoading"
-    >
-      <el-table-column prop="datasourceName" label="数据源" show-overflow-tooltip width="200"></el-table-column>
-      <el-table-column prop="srcTableName" label="数据表" show-overflow-tooltip width="200"></el-table-column>
-      <el-table-column prop="taskName" show-overflow-tooltip label="任务名称" width="200"></el-table-column>
+      row-key="id" size="small" v-loading="tableLoading">
+      <el-table-column prop="name" show-overflow-tooltip label="任务名称" width="200"></el-table-column>
       <el-table-column prop="createTime" show-overflow-tooltip label="创建时间" :formatter="timeFormat"
-                       width="160"></el-table-column>
+        width="160"></el-table-column>
       <el-table-column prop="taskStatus" show-overflow-tooltip label="任务状态" :formatter="stateFormat"
-                       width="120"></el-table-column>
+        width="120"></el-table-column>
       <el-table-column label="操作">
         <template v-slot="scope">
-          <el-button size="small" @click="editTask(scope.row)"
-                     v-if="scope.row.state === 0 || scope.row.state === 4"
-                     :style="{ marginRight: scope.row.state ? '0px' : '10px' }">编辑
-          </el-button>
-          <el-popconfirm v-if="scope.row.state === 0 || scope.row.state === 4" title="确认删除？" @confirm="delTask(scope.row)"
-                         style="margin-right: 10px">
+          <el-popconfirm v-if="scope.row.state === 0 || scope.row.state === 4" title="确认删除？"
+            @confirm="delTask(scope.row)" style="margin-right: 10px">
             <el-button size="small" slot="reference">删除</el-button>
           </el-popconfirm>
-          <el-button size="small" v-if="scope.row.state === 0 || scope.row.state === 4" @click="startTask(scope.row)">启动</el-button>
+          <el-button size="small" v-if="scope.row.state === 0 || scope.row.state === 4"
+            @click="startTask(scope.row)">启动</el-button>
           <el-button size="small" v-if="scope.row.state === 1" @click="terminateTask(scope.row)">终止</el-button>
-          <el-button size="small" v-if="scope.row.state === 2" @click="viewData(scope.row)">数据对比</el-button>
+          <!-- <el-button size="small" v-if="scope.row.state === 2" @click="viewData(scope.row)">数据对比</el-button> -->
           <el-button size="small" v-if="scope.row.state === 2" @click="exportData(scope.row)">导出</el-button>
         </template>
       </el-table-column>
     </el-table>
     <div style="text-align: center">
       <el-pagination background layout="total,prev,pager,next,jumper" :page-count="size" :total="total"
-                     :current-page="current" @current-change="handleCurrentChange">
+        :current-page="current" @current-change="handleCurrentChange">
       </el-pagination>
     </div>
     <el-dialog width="50%" title="编辑任务" :visible.sync="taskFormVis">
@@ -196,7 +187,7 @@ export default {
     },
     //开始任务
     startTask(row) {
-      taskStart(row.id).then(res => {
+      taskStart({ taskId: row.id }).then(res => {
         if (res.data.code === 0) {
           this.$message({
             type: 'success',

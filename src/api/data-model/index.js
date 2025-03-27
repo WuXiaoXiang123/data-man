@@ -26,15 +26,11 @@ export const updateDataModel = (data) => {
   })
 }
 
-export const getDataModelDetail = (current, size, params) => {
+export const getDataModelDetail = (params) => {
   return request({
-    url: '/camel-system/region/list',
+    url: '/jrd-data/model/getModelDetail',
     method: 'get',
-    params: {
-      ...params,
-      current,
-      size,
-    },
+    params,
   })
 }
 
@@ -42,6 +38,14 @@ export const removeDataModel = (id) => {
   return request({
     url: `/dataModel/${id}`,
     method: 'delete',
+  })
+}
+
+export const getModelFieldList = (params) => {
+  return request({
+    url: '/jrd-data/model/getModelField',
+    method: 'get',
+    params,
   })
 }
 
@@ -75,3 +79,5 @@ export const getViewData = (params) => {
     params: rest,
   })
 }
+
+

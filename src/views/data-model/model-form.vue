@@ -23,12 +23,13 @@
             <el-option v-for="column in mainColumnList" :key="column.name" :value="column.name"
               :label="column.name"></el-option>
           </el-select>
-          <div style="margin: 0 10px;" > - </div>
+          <div style="margin: 0 10px;"> - </div>
           <el-select v-model="item.joinFieldName" style="width: 200px" clearable filterable
             :placeholder="ruleForm.joinTableName">
             <el-option v-for="column in joinColumnList" :key="column.name" :value="column.name"
               :label="column.name"></el-option>
           </el-select>
+          <el-button style="margin-left: 10px;" @click="delRelation(index)" size="small">删除关系</el-button>
         </div>
         <el-button v-if="ruleForm.relation.length < 1" @click="addRelation">添加关联关系</el-button>
       </el-form-item>
@@ -107,6 +108,9 @@ export default {
           this[name].push({ name: i })
         }
       })
+    },
+    delRelation(index) {
+      this.ruleForm.relation.splice(index, 1)
     },
   },
 }

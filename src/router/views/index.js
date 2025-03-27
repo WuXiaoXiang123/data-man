@@ -12,6 +12,11 @@ export default [
         component: () => import(/* webpackChunkName: "views" */ '@/views/data-model/index.vue'),
       },
       {
+        path: 'dataModel/:mid',
+        name: '数据模型详情',
+        component: () => import(/* webpackChunkName: "views" */ '@/views/data-model/detail.vue'),
+      },
+      {
         path: 'dataSource',
         name: '数据源',
         component: () => import(/* webpackChunkName: "views" */ '@/views/data-source/index.vue'),
@@ -34,7 +39,8 @@ export default [
       {
         path: 'sensitive',
         name: '敏感词',
-        component: () => import(/* webpackChunkName: "views" */ '@/views/sensitive-words/index.vue'),
+        component: () =>
+          import(/* webpackChunkName: "views" */ '@/views/sensitive-words/index.vue'),
       },
     ],
   },
