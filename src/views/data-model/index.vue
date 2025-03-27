@@ -3,7 +3,7 @@
     <div>
       <el-form size="small" :inline="true" :model="searchForm">
         <el-form-item label="模型名">
-          <el-input v-model="searchForm.modelName"></el-input>
+          <el-input v-model="searchForm.name"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button size="small" type="primary" native-type="submit" @click="handleSearch">查询</el-button>
@@ -63,7 +63,7 @@ export default {
       formType: 'add',
       viewDataList: [],
       searchForm: {
-        modelName: '',
+        name: '',
       },
       tableLoading: false,
       rowData: {},

@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-form :model="ruleForm" :rules="rules" ref="formRef" label-width="120px">
-      <el-form-item label="数据模型名称" prop="modelName">
-        <el-input v-model="ruleForm.modelName" placeholder="请填写数据模型名称"></el-input>
+      <el-form-item label="数据模型名称" prop="name">
+        <el-input v-model="ruleForm.name" placeholder="请填写数据模型名称"></el-input>
       </el-form-item>
       <el-form-item label="数据表" prop="mainTableName">
         <el-select v-model="ruleForm.mainTableName" style="width: 100%" clearable filterable
@@ -56,7 +56,7 @@ export default {
       ruleForm: {
         mainTableName: '',
         joinTableName: '',
-        modelName: '',
+        name: '',
         relation: [],
       },
       rules: {
@@ -67,7 +67,7 @@ export default {
             trigger: 'change',
           },
         ],
-        modelName: [
+        name: [
           {
             required: true,
             message: '数据模型名称必填',

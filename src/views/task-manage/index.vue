@@ -3,7 +3,7 @@
     <div>
       <el-form size="small" :inline="true" :model="searchForm">
         <el-form-item label="任务名称">
-          <el-input v-model="searchForm.taskName"></el-input>
+          <el-input v-model="searchForm.name"></el-input>
         </el-form-item>
         <el-form-item label="任务状态">
           <el-select v-model="searchForm.state">
@@ -242,7 +242,7 @@ export default {
     handleReset() {
       this.current = 1
       this.searchForm = {
-        taskName: '',
+        name: '',
         state: '',
       }
       this.queryTaskList({ current: 1, size: this.size })
@@ -258,7 +258,7 @@ export default {
       let msg = this.$message({ type: 'info', message: '下载中...', duration: 0 })
       exportData(row.id).then((res) => {
         let blob = new Blob([res.data]) //Blob对象 不可变，原始数据的类文件对象，可以按照二进制的格式读取
-        FileSaver.saveAs(blob, `${dayjs().format('YYYY/MM/DD')}_${row.taskName}.xlsx`)
+        FileSaver.saveAs(blob, `${dayjs().format('YYYY/MM/DD')}_${row.name}.xlsx`)
         msg.close()
         this.$message('下载成功')
       }).catch((err) => {

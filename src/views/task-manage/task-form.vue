@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-form :model="ruleForm" :rules="rules" ref="formRef" label-width="120px" size="small">
-      <el-form-item label="任务名称" prop="taskName">
-        <el-input v-model="ruleForm.taskName" placeholder="请填写任务名"></el-input>
+      <el-form-item label="任务名称" prop="name">
+        <el-input v-model="ruleForm.name" placeholder="请填写任务名"></el-input>
       </el-form-item>
       <el-form-item label="数据源" prop="datasourceId">
         <el-select v-model="ruleForm.datasourceId" placeholder="请选择数据源" style="width: 100%"

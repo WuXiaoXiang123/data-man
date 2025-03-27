@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-form :model="taskForm" :rules="rules" ref="taskFormRef" label-width="120px">
-      <el-form-item label="任务名称" prop="taskName">
-        <el-input v-model="taskForm.taskName" placeholder="请填写任务名称"></el-input>
+      <el-form-item label="任务名称" prop="name">
+        <el-input v-model="taskForm.name" placeholder="请填写任务名称"></el-input>
       </el-form-item>
     </el-form>
   </div>
@@ -13,10 +13,10 @@ export default {
   data() {
     return {
       taskForm: {
-        taskName: '',
+        name: '',
       },
       rules: {
-        taskName: [
+        name: [
           {
             required: true,
             message: '数据模型名称必填',

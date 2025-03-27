@@ -30,7 +30,7 @@
       <el-tabs v-model="activeView">
         <el-tab-pane :disabled="viewDetailLoading" v-for="item in dataModel.viewList" :name="String(item.id)"
           :key="item.id">
-          <span style="margin: 0 10px;" slot="label"> {{ item.viewName }} <i v-if="activeView == item.id"
+          <span style="margin: 0 10px;" slot="label"> {{ item.name }} <i v-if="activeView == item.id"
               @click="editView(item)" class="el-icon-edit"></i></span>
         </el-tab-pane>
       </el-tabs>
@@ -55,7 +55,8 @@
     </el-dialog>
 
     <el-dialog width="90%" title="数据对比" :visible.sync="dataComparisonFormVis">
-      <data-comparison v-if="dataComparisonFormVis" :sourceData="sourceView" :viewList="dataModel.viewList"></data-comparison>
+      <data-comparison v-if="dataComparisonFormVis" :sourceData="sourceView"
+        :viewList="dataModel.viewList"></data-comparison>
       <div slot="footer" style="display: flex;justify-content: center">
         <el-button size="small" @click="dataComparisonFormVis = false">取消</el-button>
         <el-button size="small" type="primary" @click="exportFormSubmit">确定</el-button>
@@ -123,7 +124,7 @@ export default {
               this.queryDataModelDetail({ id: this.$route.params.mid })
             })
           } else {
-            this.viewDetail.viewName = form.viewName
+            this.viewDetail.name = form.name
             updateModelView(this.viewDetail).then(res => {
               this.$message({
                 type: 'success',
@@ -146,14 +147,14 @@ export default {
     refreshView() {
       this.queryDataModelDetail({ id: this.$route.params.mid })
     },
-    dataComparison(){
+    dataComparison() {
       this.sourceView = this.dataModel.viewList.filter(item => item.id == this.activeView)[0]
       this.dataComparisonFormVis = true
     },
-    createExportTask(){
+    createExportTask() {
       this.exportFormVis = true
     },
-    exportFormSubmit(){
+    exportFormSubmit() {
       this.$refs.exportFormRef.$refs.taskFormRef.validate(valid => {
         if (valid) {
           const form = this.$refs.exportFormRef.taskForm
@@ -182,7 +183,7 @@ export default {
         this.viewDetailLoading = true
         getViewDetail({ id: val }).then(res => {
           if (res.data.code === 0) {
-            console.log(res.data.data,'viewDetail')
+            console.log(res.data.data, 'viewDetail')
             this.viewDetail = res.data.data
           }
         }).finally(() => {

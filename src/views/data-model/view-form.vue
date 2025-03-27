@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-form :model="viewForm" :rules="viewRules" ref="viewFormRef" label-width="120px">
-      <el-form-item label="视图名称" prop="viewName">
-        <el-input v-model="viewForm.viewName" placeholder="请填写视图名称"></el-input>
+      <el-form-item label="视图名称" prop="name">
+        <el-input v-model="viewForm.name" placeholder="请填写视图名称"></el-input>
       </el-form-item>
       <el-form-item v-if="formType == 'add'" label="视图字段" prop="fieldList">
         <el-checkbox-group v-model="viewForm.fieldList">
@@ -32,11 +32,11 @@ export default {
   data() {
     return {
       viewForm: {
-        viewName: '',
+        name: '',
         fieldList: [],
       },
       viewRules: {
-        viewName: [
+        name: [
           {
             required: true,
             message: '视图名称必填',

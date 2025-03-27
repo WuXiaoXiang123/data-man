@@ -22,7 +22,7 @@
         <el-table-column prop="tableType" label="数据表类型" show-overflow-tooltip width="200"></el-table-column>
         <el-table-column label="操作">
           <template v-slot="scope">
-            <el-button size="small" @click="addTask(scope.row)">新建任务</el-button>
+            <!-- <el-button size="small" @click="addTask(scope.row)">新建任务</el-button> -->
             <!-- <el-button size="small" @click="viewData(scope.row)">查看表数据</el-button> -->
           </template>
         </el-table-column>

@@ -1,10 +1,10 @@
 <template>
   <div class="avue-contain">
     <div style="display: flex;margin-bottom: 10px;align-items: center;justify-content: center;">
-      <div>{{ sourceData.viewName }}</div>
+      <div>{{ sourceData.name }}</div>
       <div style="margin: 0 20px;">——</div>
       <el-select v-model="targetViewId" @change="handleTargetViewChange" placeholder="请选择目标视图">
-        <el-option v-for="item in viewList" :key="item.id" :label="item.viewName" :value="item.id">
+        <el-option v-for="item in viewList" :key="item.id" :label="item.name" :value="item.id">
         </el-option>
       </el-select>
     </div>
